@@ -55,6 +55,11 @@
   color: #212121;
   gap: 8px;
   padding: 0;
+  cursor: pointer;
+}
+
+.profile__edit-button:hover {
+background-image: url(../images/profilehover.svg);
 }
 
 .profile__add-btn {
@@ -69,8 +74,12 @@
   border-radius: 8px;
   background: #212121;
   color: #fcf5e5;
+  cursor: pointer;
 }
 
+.profile__add-btn:hover {
+  background-image: url(../images/addprofile.svg);
+}
 @media screen and (max-width: 627px) {
   .profile {
     flex-direction: column;
