@@ -58,3 +58,7 @@
   max-width: 156px;
   max-width: none;
 }
+
+.modal {
+  visibility: hidden;
+}
