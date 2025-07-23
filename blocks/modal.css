@@ -9,8 +9,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: visibility 0.3s;
-  opacity: 0.3s ease in;
+  opacity: 0%;
+  transition: visibility 0.3s, opacity 0.3s ease in;
 }
 
 .modal_is-opened {
@@ -76,4 +76,10 @@
   border-radius: 8px;
   border: none;
   transition: 0.3s;
+}
+
+@media screen and (max-width: 627px) {
+  .modal__submit-btn {
+    display: flex;
+  }
 }
