@@ -9,13 +9,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0%;
-  transition: visibility 0.3s, opacity 0.3s ease in;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s ease-in;
 }
 
 .modal_is-opened {
   visibility: visible;
-  opacity: 100%;
+  opacity: 1;
 }
 
 .modal__container {
@@ -35,6 +35,8 @@
   width: 40px;
   height: 40px;
   background-image: url(../images/closeicon.svg);
+  border: none;
+  border-color: transparent;
 }
 
 .modal__title {
@@ -80,6 +82,13 @@
 
 @media screen and (max-width: 627px) {
   .modal__submit-btn {
-    display: flex;
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #FCF5E5;
   }
 }

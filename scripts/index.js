@@ -38,7 +38,7 @@ function closeModal(modal) {
 }
 
 editProfileCloseBtn.addEventListener("click", function () {
-  closeModal(editProfileModal)
+  closeModal(editProfileModal);
 });
 
 newPostButton.addEventListener("click", function () {
@@ -52,17 +52,21 @@ newPostCloseButton.addEventListener("click", function () {
 });
 
 function handleEditProfileSubmit(evt) {
-  evt.preventdefault();
+  evt.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
 }
 
+ closeModal(editProfileModal);
+
 function handlenewPostSubmit(evt) {
-  evt.preventdefault();
+  evt.preventDefault();
   newPost.textContent = newPostInput.value;
   imageLink.textContent = newPostLinkInput.value;
 }
 
-editProfileForm.addEventListener("submit", handleEditProfileSubmit);
+ closeModal(newPostModal);
+
+ editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 newPostForm.addEventListener("submit", handlenewPostSubmit);
