@@ -1,3 +1,10 @@
+.card {
+  font-family: "Poppins", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .card__image {
   height: 413px;
   width: 100%;
@@ -20,6 +27,27 @@
   margin: 0;
 }
 
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__delete-button{
+width: 32px;
+height: 32px;
+position: absolute;
+top: 10px;
+right: 10px;
+}
+
+.card__delete-button:hover{
+width: 32px;
+height: 32px;
+top: 10px;
+left: 9px;
+}
+
 .card__content {
   font-family: "Poppins", Arial, sans-serif;
   font-weight: 500;
@@ -30,7 +58,7 @@
   display: flex;
   justify-content: space-between;
 }
-.card__like-btn {
+.card__like-button {
   background-image: url(../images/LikeIcon.svg);
   width: 20px;
   height: 18px;
@@ -43,8 +71,17 @@
   opacity: 40%;
 }
 
-.card__like-btn:hover {
+.card__like-button:hover {
   opacity: 100%;
+}
+
+.card__like-button_active {
+  background-image: url(../images/like-active-logo.svg);
+  opacity: 1;
+}
+
+.card__like-button_:active {
+  opacity: 0.4;
 }
 
 @media screen and (max-width: 627px) {
