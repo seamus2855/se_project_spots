@@ -15,7 +15,7 @@
 }
 
 .modal_type_preview {
-padding: 0 16px;
+  padding: 0 16px;
 }
 
 .modal_is-opened {
@@ -42,6 +42,7 @@ padding: 0 16px;
   background-image: url(../images/closeicon.svg);
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .modal__title {
@@ -106,6 +107,11 @@ padding: 0 16px;
   border-radius: 8px;
   border: none;
   transition: 0.3s;
+  cursor: pointer;
+}
+
+.modal__submit-btn:hover {
+opacity: 100%;
 }
 
 @media screen and (max-width: 627px) {

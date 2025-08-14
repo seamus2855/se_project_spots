@@ -61,7 +61,6 @@ const cardTemplate = document
 const cardsList = document.querySelector(".cards__list");
 
 function getCardElement(data) {
-  console.log(data);
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
@@ -85,7 +84,6 @@ function getCardElement(data) {
   const cardDeleteButtonEl = cardElement.querySelector(".card__delete-button");
   cardDeleteButtonEl.addEventListener("click", () => {
     cardElement.remove();
-    cardElement = null;
   });
 
   return cardElement;
@@ -119,7 +117,7 @@ newPostCloseButton.addEventListener("click", function () {
 
 previewModal.addEventListener("click", function () {
   closeModal(previewModal);
-}); 
+});
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
@@ -128,7 +126,7 @@ function handleEditProfileSubmit(evt) {
   closeModal(editProfileModal);
 }
 
-function handlenewPostSubmit(evt) {
+function handleNewPostSubmit(evt) {
   evt.preventDefault();
   const inputValues = {
     name: newPostNameInput.value,

@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  cursor: pointer;
 }
 
 .card__image {
@@ -11,6 +12,7 @@
   object-fit: cover;
   display: block;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .card__title {
@@ -39,13 +41,14 @@ height: 32px;
 position: absolute;
 top: 10px;
 right: 10px;
+cursor: pointer;
 }
 
 .card__delete-button:hover{
 width: 32px;
 height: 32px;
 top: 10px;
-left: 9px;
+right: 9px;
 }
 
 .card__content {
@@ -75,7 +78,7 @@ left: 9px;
   opacity: 100%;
 }
 
-.card__like-button_active {
+.card__like-button-active {
   background-image: url(../images/like-active-logo.svg);
   opacity: 1;
 }
