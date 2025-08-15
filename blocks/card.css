@@ -78,7 +78,7 @@ right: 9px;
   opacity: 100%;
 }
 
-.card__like-button-active {
+.card__like-button_active {
   background-image: url(../images/like-active-logo.svg);
   opacity: 1;
 }

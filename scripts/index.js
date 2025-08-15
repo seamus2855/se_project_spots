@@ -132,6 +132,8 @@ function handleNewPostSubmit(evt) {
     name: newPostNameInput.value,
     link: newPostImageLinkInput.value,
   };
+  const cardElement = getCardElement(inputValues);
+  cardsList.prepend(cardElement);
   closeModal(newPostModal);
 }
 
