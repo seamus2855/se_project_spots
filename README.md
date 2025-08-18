@@ -1,5 +1,5 @@
 # Project 3: Spots
-
+Seamus Ryan
 ### Overview
 
 - Intro
@@ -8,8 +8,7 @@
 
 **Intro**
 
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
-
+This project is showing different images of spots of places and objects in areas. I had to make different modals to open different pieces of the project which leads to transition to next stage of the project. I used javascript as well as css to take from html to improve my project. I had to make changes to the cards to match the figma that way everything looked perfect to what the experts want to see.
 **Figma**
 
 - [Link to the project on Figma]https://www.figma.com/design/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project--Spots?node-id=2-60&t=wijWzDeo1mXxXuUX-0

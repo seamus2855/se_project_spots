@@ -51,7 +51,7 @@ const profileDescriptionEl = document.querySelector(".profile__description");
 const newPostNameInput = document.querySelector("#new-post-input-name");
 const newPostImageLinkInput = document.querySelector("#new-post-input");
 
-const previewModal = document.querySelector("preview__modal");
+const previewModal = document.querySelector("#preview-modal");
 const previewModalCloseButton = previewModal.querySelector(".modal__close-btn");
 const previewImageEl = previewModal.querySelector(".modal__image");
 
@@ -137,12 +137,9 @@ function handleNewPostSubmit(evt) {
   closeModal(newPostModal);
 }
 
-const cardElement = getCardElement(inputValues);
-cardsList.prepend(cardElement);
-
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
-newPostForm.addEventListener("submit", handlenewPostSubmit);
+newPostForm.addEventListener("submit", handleNewPostSubmit);
 
 initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
