@@ -116,6 +116,9 @@ newPostCloseButton.addEventListener("click", function () {
 });
 
 previewModal.addEventListener("click", function () {
+  previewImageEl.src = data.link;
+  previewImageEl.alt = data.name;
+  previewImageEl.textContent = data.name;
   closeModal(previewModal);
 });
 
@@ -130,8 +133,10 @@ function handleNewPostSubmit(evt) {
   evt.preventDefault();
   const inputValues = {
     name: newPostNameInput.value,
-    link: newPostImageLinkInput.value,
+    link: newPostImageLinkInput.value
   };
+  evt.target.reset()
+  
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   closeModal(newPostModal);
