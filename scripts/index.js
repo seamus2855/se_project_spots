@@ -48,12 +48,13 @@ const newPostForm = newPostModal.querySelector(".modal__form");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
-const newPostNameInput = document.querySelector("#new-post-input-name");
-const newPostImageLinkInput = document.querySelector("#new-post-input");
+const newPostNameInput = document.querySelector("#post-caption-input");
+const newPostImageLinkInput = document.querySelector("#post-image-input");
 
 const previewModal = document.querySelector("#preview-modal");
 const previewModalCloseButton = previewModal.querySelector(".modal__close-btn");
 const previewImageEl = previewModal.querySelector(".modal__image");
+const previewImageCaption = previewModal.querySelector(".modal__caption");
 
 const cardTemplate = document
   .querySelector("#card-template")
@@ -71,7 +72,7 @@ function getCardElement(data) {
 
   cardImageEl.addEventListener("click", () => {
     previewImageEl.src = data.link;
-    previewImageEl.alt = data.name;
+    previewImageCaption.textContent = data.name;
     previewImageEl.textContent = data.name;
     openModal(previewModal);
   });
@@ -115,10 +116,7 @@ newPostCloseButton.addEventListener("click", function () {
   closeModal(newPostModal);
 });
 
-previewModal.addEventListener("click", function () {
-  previewImageEl.src = data.link;
-  previewImageEl.alt = data.name;
-  previewImageEl.textContent = data.name;
+previewModalCloseButton.addEventListener("click", function () {
   closeModal(previewModal);
 });
 
