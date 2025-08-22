@@ -77,12 +77,9 @@
 }
 
 .modal__close-btn_type_preview {
-  width: 22.627418130814632;
-  height: 22.627418130814632;
-  opacity: 1;
-  top: 4.49px;
-  left: 4.49px;
-  border-width: 2px;
+  background-image: url(../images/light-close.svg);
+  top: 0;
+  right: -52.5px;
 }
 
 .modal__image-container {
@@ -99,14 +96,14 @@
 }
 
 .modal__caption {
-  background-color: white;
+  background-color: #212121;
   position: absolute;
-  margin: 4px;
+  margin: 0;
   padding: 8px;
   border-radius: 8px;
-  color: #212121;
-  top: 750px;
-  left: 497px;
+  color: #fff;
+  top: calc(100% + 10px);
+  left: 0;
   font-weight: 500;
   font-size: 20px;
 }
