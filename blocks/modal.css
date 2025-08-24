@@ -77,7 +77,7 @@
 }
 
 .modal__close-btn_type_preview {
-  background-image: url(../images/light-close.svg);
+  background-image: url(../images/closeicon.svg);
   top: 0;
   right: -52.5px;
 }
