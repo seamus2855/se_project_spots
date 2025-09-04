@@ -58,7 +58,8 @@
 }
 
 .modal__label {
-  margin: 0 0 32px;
+  margin-bottom: 32px;
+  display: block;
 }
 
 .modal__input {
@@ -72,8 +73,23 @@
   line-height: 1;
 }
 
+.modal__input_type_error {
+  border: 1px solid rgba(255,0,0,0.6);
+}
+
 .modal__input::placeholder {
   color: #2121214d;
+  opacity: 30%;
+}
+
+.modal__input:hover {
+  border: 1px solid rgb(33, 33, 33);
+}
+
+.modal__error {
+  display: block;
+  color: black;
+  margin-top: 8px;
 }
 
 .modal__close-btn_type_preview {
