@@ -1,10 +1,10 @@
 const settings = {
-    formSelector: ".modal__form",
-    inputSelector: ".modal__input",
-    newPostSubmitbutton: ".modal__button",
-    inactiveButtonClass: ".modal__button_disabled",
-    inputErrorClass: ".modal__input_type_error",
-    errorClass: ".modal__error_visible",
+    formSelector: "modal__form",
+    inputSelector: "modal__input",
+    submitButtonSelector: "modal__button",
+    inactiveButtonClass: "modal__button_disabled",
+    inputErrorClass: "modal__input_type_error",
+    errorClass: "modal__error_visible",
 };
 
 const showInputError = (formEl, inputElement, errorMsg) => {
@@ -53,8 +53,8 @@ const resetValidation = (formEl, inputList) => {
 };
 
 const setEventListeners = (formEl) => {
-  const inputList = Array.from(formEl.querySelectorAll("config.inputSelector"));
-  const buttonElement = formEl.querySelector("config.submitButtonSelector");
+  const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
+  const buttonElement = formEl.querySelector(config.submitButtonSelector);
 
   toggleButtonState(inputList, buttonElement, config);
 
@@ -67,7 +67,7 @@ const setEventListeners = (formEl) => {
 };
 
 const enableValidation = (config) => {
-  const formList = document.querySelectorAll("config.formselector");
+  const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formEl) => {
     setEventListeners(formEl, config);
   });
