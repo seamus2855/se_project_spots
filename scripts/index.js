@@ -118,6 +118,12 @@ editProfileCloseBtn.addEventListener("click", function () {
 });
 
 newPostButton.addEventListener("click", function () {
+    newPostNameInput.value
+  editProfileDescriptionInput.value 
+  resetValidation(editProfileForm, [
+    newPostNameInput,
+    newPostImageLinkInput,
+  ]);
   openModal(newPostModal);
 });
 
@@ -133,7 +139,9 @@ function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  closeModal(editProfileModal);
+    evt.target.reset();
+  disableButton(handleEditProfileSubmit, settings);
+  closeModal(handleEditProfileSubmit);
 }
 
 function handleNewPostSubmit(evt) {
@@ -143,7 +151,7 @@ function handleNewPostSubmit(evt) {
     link: newPostImageLinkInput.value,
   };
   evt.target.reset();
-  disableButton(newPostSubmitbutton, settings);
+  disableButton(newPostSubmitButton, settings);
 
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
