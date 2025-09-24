@@ -128,6 +128,10 @@ newPostButton.addEventListener("click", function () {
 });
 
 newPostButton.addEventListener("click", function () {
+  openModal(newPostModal);
+});
+
+newPostCloseButton.addEventListener("click", function () {
   closeModal(newPostModal);
 });
 
@@ -141,7 +145,7 @@ function handleEditProfileSubmit(evt) {
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
     evt.target.reset();
   disableButton(handleEditProfileSubmit, settings);
-  closeModal(handleEditProfileSubmit);
+  closeModal(editProfileModal);
 }
 
 function handleNewPostSubmit(evt) {

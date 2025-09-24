@@ -88,7 +88,7 @@
 
 .modal__error {
   display: block;
-  color: black;
+  color: red;
   margin-top: 8px;
 }
 
@@ -136,6 +136,10 @@
   border: none;
   transition: 0.3s;
   cursor: pointer;
+}
+
+.modal__submit-btn_disabled {
+color: grey;
 }
 
 .modal__submit-btn:hover {
