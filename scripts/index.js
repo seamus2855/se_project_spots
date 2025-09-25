@@ -75,10 +75,7 @@ function getCardElement(data) {
     previewImageEl.src = data.link;
     previewImageCaption.textContent = data.name;
     previewImageEl.textContent = data.name;
-    resetValidation(cardImageEl, [
-      previewImageEl,
-      previewImageCaption,
-    ]);
+    resetValidation(cardImageEl, [previewImageEl, previewImageCaption]);
     openModal(previewModal);
   });
 
@@ -97,18 +94,19 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", function (evt) {
+    if ((evt.key = escape)) {
+      closeModal(modal);
+    }
+  });
 }
 
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
-  resetValidation(editProfileForm, [
-    editProfileNameInput,
-    editProfileDescriptionInput,
-  ]);
+  resetValidation(editProfileForm, settings);
   openModal(editProfileModal);
 });
-
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
@@ -118,12 +116,8 @@ editProfileCloseBtn.addEventListener("click", function () {
 });
 
 newPostButton.addEventListener("click", function () {
-    newPostNameInput.value
-  editProfileDescriptionInput.value 
-  resetValidation(editProfileForm, [
-    newPostNameInput,
-    newPostImageLinkInput,
-  ]);
+  newPostForm.reset();
+  resetValidation(newPostForm, settings);
   openModal(newPostModal);
 });
 
@@ -143,7 +137,7 @@ function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-    evt.target.reset();
+  evt.target.reset();
   disableButton(handleEditProfileSubmit, settings);
   closeModal(editProfileModal);
 }
@@ -172,19 +166,19 @@ initialCards.forEach(function (item) {
 });
 
 editProfileModal.addEventListener("click", function (evt) {
-if (evt.target.classList.contains("modal")) {
-closeModal(editProfileModal)
-}
-})
+  if (evt.target.classList.contains("modal")) {
+    closeModal(editProfileModal);
+  }
+});
 
 newPostModal.addEventListener("click", function (evt) {
-if (evt.target.classList.contains("modal")) {
-closeModal(newPostModal)
-}
-})
+  if (evt.target.classList.contains("modal")) {
+    closeModal(newPostModal);
+  }
+});
 
 previewModal.addEventListener("click", function (evt) {
-if (evt.target.classList.contains("modal")) {
-closeModal(previewModal)
-}
-})
+  if (evt.target.classList.contains("modal")) {
+    closeModal(previewModal);
+  }
+});
