@@ -1,6 +1,6 @@
 .modal {
   visibility: hidden;
-  background-color: #00000000;
+   background: #00000080;
   position: fixed;
   top: 0;
   right: 0;
@@ -9,7 +9,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
   transition: visibility 0.3s, opacity 0.3s ease-in;
   padding: 0 10px;
 }

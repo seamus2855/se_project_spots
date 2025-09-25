@@ -170,3 +170,21 @@ initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
+editProfileModal.addEventListener("click", function (evt) {
+if (evt.target.classList.contains("modal")) {
+closeModal(editProfileModal)
+}
+})
+
+newPostModal.addEventListener("click", function (evt) {
+if (evt.target.classList.contains("modal")) {
+closeModal(newPostModal)
+}
+})
+
+previewModal.addEventListener("click", function (evt) {
+if (evt.target.classList.contains("modal")) {
+closeModal(previewModal)
+}
+})
