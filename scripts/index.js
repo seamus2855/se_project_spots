@@ -92,13 +92,23 @@ function getCardElement(data) {
   return cardElement;
 }
 
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_is-opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
-  document.addEventListener("keydown", function (evt) {
-    if ((evt.key = escape)) {
-      closeModal(modal);
-    }
-  });
+  document.addEventListener("keydown", handleEscClose);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", handleEscClose);
 }
 
 editProfileBtn.addEventListener("click", function () {
@@ -165,20 +175,10 @@ initialCards.forEach(function (item) {
   cardsList.append(cardElement);
 });
 
-editProfileModal.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(editProfileModal);
-  }
-});
-
-newPostModal.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(newPostModal);
-  }
-});
-
-previewModal.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(previewModal);
-  }
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target === modal) {
+      closeModal(modal);
+    }
+  });
 });
