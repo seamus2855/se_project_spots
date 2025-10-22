@@ -1,3 +1,5 @@
+import { enableValidation, validationConfig } from "./validate.js";
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
