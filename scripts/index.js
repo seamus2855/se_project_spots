@@ -92,29 +92,25 @@ const cardTemplate = document
 const cardsList = document.querySelector(".cards__list");
 
 function getCardElement(data) {}
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const cardImageEl = cardElement.querySelector(".card__image");
+const cardElement = cardTemplate.cloneNode(true);
+const cardTitleEl = cardElement.querySelector(".card__title");
+const cardImageEl = cardElement.querySelector(".card__image");
 
-  cardImageEl.src = data.link;
-  cardImageEl.alt = data.name;
-  cardTitleEl.textContent = data.name;
+cardImageEl.src = data.link;
+cardImageEl.alt = data.name;
+cardTitleEl.textContent = data.name;
 
-  cardImageEl.addEventListener("click", () => {
-    previewImageEl.src = data.link;
-    previewImageCaption.textContent = data.name;
-    previewImageEl.textContent = data.name;
-    resetValidation(cardImageEl, [previewImageEl, previewImageCaption]);
-    openModal(previewModal);
-  });
+cardImageEl.addEventListener("click", () => {
+  previewImageEl.src = data.link;
+  previewImageCaption.textContent = data.name;
+  previewImageEl.textContent = data.name;
+  resetValidation(cardImageEl, [previewImageEl, previewImageCaption]);
+  openModal(previewModal);
+});
 
-  function handleAvatarSubmit(evt) {
-    evt.preventDefault();
-    api.editAvatarInfo(avatarInput.value)
-    .then((data) => {});
-   
-
-   
+function handleAvatarSubmit(evt) {
+  evt.preventDefault();
+  api.editAvatarInfo(avatarInput.value).then((data) => {});
 
   const cardLikeButtonEl = cardElement.querySelector(".card__like-button");
   cardLikeButtonEl.addEventListener("click", () => {
