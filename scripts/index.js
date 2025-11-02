@@ -190,7 +190,7 @@ function handleEditProfileSubmit(evt) {
       about: editProfileDescriptionInput.value,
     })
     .then((_data) => {
-      profileNameEl.textContent = editProfileNameInput.value;
+      profileNameEl.textContent = handleEditProfileSubmit.value;
       profileDescriptionEl.textContent = editProfileDescriptionInput.value;
       evt.target.reset();
       disableButton(handleEditProfileSubmit, settings);
