@@ -189,6 +189,7 @@ function handleEditProfileSubmit(evt) {
       name: editProfileNameInput.value,
       about: editProfileDescriptionInput.value,
     })
+
     .then((_data) => {
       profileNameEl.textContent = handleEditProfileSubmit.value;
       profileDescriptionEl.textContent = editProfileDescriptionInput.value;

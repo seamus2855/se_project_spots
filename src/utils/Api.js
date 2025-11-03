@@ -33,7 +33,6 @@ class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-
   async editAvatarInfo({ avatar }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
