@@ -1,0 +1,20 @@
+{
+  "name": "final_spots_project",
+  "version": "1.0.0",
+  "description": "spots",
+  "homepage": "https://github.com/seamus2855/se_project_spots#readme",
+  "bugs": {
+    "url": "https://github.com/seamus2855/se_project_spots/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seamus2855/se_project_spots.git"
+  },
+  "license": "ISC",
+  "author": "Seamus_Ryan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
