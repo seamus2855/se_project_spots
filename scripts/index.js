@@ -32,12 +32,12 @@ const initialCards = [
   },
 ];
 
-const api = new api({
+const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
     authorization: "e073259d-746e-4484-91c0-1fb71a5ff4fb",
+    "Content-Type": "application/json",
   },
-  "Content-Type": "application/json",
 });
 
 api
