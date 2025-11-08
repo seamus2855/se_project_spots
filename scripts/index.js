@@ -1,4 +1,4 @@
-import { enableValidation, validationConfig } from "../scripts/validate.js";
+export { enableValidation} from "../scripts/validate.js";
 import Api from "../src/utils/Api.js";
 
 const initialCards = [
@@ -43,7 +43,7 @@ const api = new Api({
 api
   .getAppInfo()
   .then(([cards]) => {
-    console.log(cards);
+    console.log("cards",cards);
     cards.forEach(function (item) {
       const cardElement = getCardElement(item);
       cardsList.append(cardElement);
@@ -81,7 +81,7 @@ const previewImageEl = previewModal.querySelector(".modal__image");
 const previewImageCaption = previewModal.querySelector(".modal__caption");
 
 const avatarModal = document.querySelector("#avatar-modal");
-const avatarForm = avatarModal.querySelector(".modal__Form");
+const avatarForm = avatarModal.querySelector(".modal__form");
 const avatarSubmitBtn = avatarModal.querySelector(".modal__button");
 const avatarModalCloseBtn = avatarModal.querySelector(".modal__close");
 const avatarInput = avatarModal.querySelector("#profile-avatar-input");
@@ -91,7 +91,7 @@ const cardTemplate = document
   .content.querySelector(".card");
 const cardsList = document.querySelector(".cards__list");
 
-function getCardElement(data) {}
+function getCardElement(data) {
 const cardElement = cardTemplate.cloneNode(true);
 const cardTitleEl = cardElement.querySelector(".card__title");
 const cardImageEl = cardElement.querySelector(".card__image");
@@ -108,9 +108,13 @@ cardImageEl.addEventListener("click", () => {
   openModal(previewModal);
 });
 
+
+return cardElement;
+}
+
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
-  api.editAvatarInfo(avatarInput.value).then((data) => {});
+  api.editAvatarInfo(avatarInput.value).then((_data) => {});
 
   const cardLikeButtonEl = cardElement.querySelector(".card__like-button");
   cardLikeButtonEl.addEventListener("click", () => {
@@ -150,9 +154,6 @@ editProfileBtn.addEventListener("click", function () {
   resetValidation(editProfileForm, settings);
   openModal(editProfileModal);
 });
-function closeModal(modal) {
-  modal.classList.remove("modal_is-opened");
-}
 
 editProfileCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
@@ -217,10 +218,11 @@ function handleEditProfileSubmit(evt) {
 
   newPostForm.addEventListener("submit", handleNewPostSubmit);
 
-  initialCards.forEach(function (item) {
-    const cardElement = getCardElement(item);
-    cardsList.append(cardElement);
-  });
+//  initialCards.forEach(function (item) {
+
+  //  const cardElement = getCardElement(item);
+    //cardsList.append(cardElement);
+  //});
 
   document.querySelectorAll(".modal").forEach((modal) => {
     modal.addEventListener("mousedown", (evt) => {

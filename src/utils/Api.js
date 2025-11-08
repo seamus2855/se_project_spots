@@ -9,42 +9,59 @@ class Api {
   }
 
   async getInitialCards() {
-    const res = await fetch($, { this: _baseUrl } / cards, {
+    const res = await fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     });
     if (res.ok) {
       return res.json();
     }
-    return await Promise.reject(`Error: ${res.status}`);
+    return Promise.reject(`Error: ${res.status}`);
   }
 
   async editUserInfo({ name, about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    const res = await fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name,
         about,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
     });
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
   }
+
   async editAvatarInfo({ avatar }) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    const res = await fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         avatar,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
     });
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
   }
 }
+
+// Instantiate Api and call the instance method instead of calling it on the class
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1", // replace with your real base URL
+  headers: { "Content-Type": "application/json" },
+});
+
+api
+  .getInitialCards()
+  .then((result) => {
+    // process the result
+    console.log(result);
+  })
+  .catch((err) => {
+    console.error(err); // log the error to the console
+  });
+
+export default Api;
