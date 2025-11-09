@@ -8,14 +8,23 @@ class Api {
     return Promise.all([this.getInitialCards()]);
   }
 
-  async getInitialCards() {
-    const res = await fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
-    });
+  _checkResponse(res) {
     if (res.ok) {
       return res.json();
     }
     return Promise.reject(`Error: ${res.status}`);
+  }
+
+  async getInitialCards() {
+    const res = await fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
+    });
+    return this._checkResponse(res);
+  }
+
+  async request(path, options) {
+    const res = await fetch(`${this._baseUrl}${path}`, options);
+    return this._checkResponse(res);
   }
 
   async editUserInfo({ name, about }) {
@@ -27,10 +36,7 @@ class Api {
         about,
       }),
     });
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
+    return this._checkResponse(res);
   }
 
   async editAvatarInfo({ avatar }) {
@@ -41,10 +47,7 @@ class Api {
         avatar,
       }),
     });
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
+    return this._checkResponse(res);
   }
 }
 
@@ -61,7 +64,7 @@ api
     console.log(result);
   })
   .catch((err) => {
-    console.error(err); // log the error to the console
+    console.error();
   });
 
 export default Api;

@@ -1,60 +1,61 @@
-import { resolve } from "path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
-import MiniCssExtractPlugin, { loader as _loader } from "mini-css-extract-plugin";
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-export const entry = {
-  main: "./src/index.js",
-};
-export const output = {
-  path: resolve(__dirname, "dist"),
-  filename: "main.js",
-  publicPath: "",
-};
-export const mode = "development";
-export const devtool = "inline-source-map";
-export const stats = "errors-only";
-export const devServer = {
-  static: resolve(__dirname, "./dist"),
-  compress: true,
-  port: 8080,
-  open: true,
-  liveReload: true,
-  hot: false,
-};
-export const target = ["web", "es5"];
-export const module = {
-  rules: [
-    {
-      test: /\\.js$/,
-      loader: "babel-loader",
-      exclude: "/node_modules/",
-    },
-    {
-      test: /\\.css$/,
-      use: [
-        _loader,
-        {
-          loader: "css-loader",
-          options: {
-            importLoaders: 1,
+module.exports = {
+  entry: {
+    main: "./src/index.js",
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "main.js",
+    publicPath: "",
+  },
+
+  mode: "development",
+  devtool: "inline-source-map",
+  stats: "errors-only",
+  devServer: {
+    static: path.resolve(__dirname, "./dist"),
+    compress: true,
+    port: 8080,
+    open: true,
+    liveReload: true,
+    hot: false,
+  },
+  target: ["web", "es5"],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: "/node_modules/",
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+            },
           },
-        },
-        "postcss-loader",
-      ],
-    },
-    {
-      test: /\\.(png|svg|jpg|jpeg|webp|gif|woff(2)?|eot|ttf|otf)$/,
-      type: "asset/resource",
-    },
+          "postcss-loader",
+        ],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|webp|gif|woff(2)?|eot|ttf|otf)$/,
+        type: "asset/resource",
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
   ],
 };
-export const plugins = [
-  new HtmlWebpackPlugin({
-    template: "./src/index.html",
-  }),
-  new CleanWebpackPlugin(),
-  new MiniCssExtractPlugin(),
-];
-
-export default { presets };
