@@ -2,6 +2,7 @@ import { resolve } from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import MiniCssExtractPlugin, { loader as _loader } from "mini-css-extract-plugin";
+import { FORMERR } from "dns";
 
 export const entry = {
   main: "./src/index.js",
@@ -56,3 +57,5 @@ export const plugins = [
   new CleanWebpackPlugin(),
   new MiniCssExtractPlugin(),
 ];
+
+export const LOADER = _loader;
