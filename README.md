@@ -25,4 +25,4 @@ Deployment link: https://seamus2855.github.io/se_project_spots//
 
 
 Good luck and have fun!
-https://www.loom.com/share/3e46803909ad466186f0a4819c66b5b1?sid=4f9672ca-c8d1-4f1f-957e-24ca7ae0c1a8
+https://www.loom.com/share/c394fc621bc2422ab5507bca5d391950

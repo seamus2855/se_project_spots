@@ -1,13 +1,14 @@
-import { fileURLToPath } from "url";
-import { dirname, resolve } from "path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
+const fileURLToPath = require ("url" );
+const dirname = require ("path");
+const resolve = require ("path")
+const HtmlWebpackPlugin = require ("html-webpack-plugin");
+const CleanWebpackPlugin = require ("clean-webpack-plugin");
+const MiniCssExtractPlugin = require ("mini-css-extract-plugin");
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export default {
+module.exports = {
   entry: {
     main: "./src/index.js",
   },

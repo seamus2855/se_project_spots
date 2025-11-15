@@ -1,5 +1,5 @@
-export { enableValidation } from "./validate.js";
-import Api from "./utils/Api.js";
+export { enableValidation } from "../scripts/validate.js";
+import Api from "../utils/Api.js";
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -67,7 +67,6 @@ function getCardElement(data) {
     previewImageEl.src = data.link;
     previewImageCaption.textContent = data.name;
     previewImageEl.textContent = data.name;
-    resetValidation(cardImageEl, [previewImageEl, previewImageCaption]);
     openModal(previewModal);
   });
 
@@ -145,4 +144,16 @@ newPostCloseButton.addEventListener("click", function () {
 
 previewModalCloseButton.addEventListener("click", function () {
   closeModal(previewModal);
+});
+
+api.someMethod()
+.then(_res => {
+// here is the response that should be used to update the DOM.
+// also in `then` you should close the popup
+})
+.catch(_err => {
+// here you catch possible errors
+})
+.finally(() => {
+// here you return the default button text back
 });
