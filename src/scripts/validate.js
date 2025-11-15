@@ -49,7 +49,7 @@ const toggleButtonState = (inputList, buttonElement, config) => {
   }
 };
 
-const disableButton = (buttonElement, config) => {
+const disableButton = (buttonElement, _config) => {
   buttonElement.disabled = true;
 };
 
