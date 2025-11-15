@@ -145,15 +145,3 @@ newPostCloseButton.addEventListener("click", function () {
 previewModalCloseButton.addEventListener("click", function () {
   closeModal(previewModal);
 });
-
-api.someMethod()
-.then(_res => {
-// here is the response that should be used to update the DOM.
-// also in `then` you should close the popup
-})
-.catch(_err => {
-// here you catch possible errors
-})
-.finally(() => {
-// here you return the default button text back
-});

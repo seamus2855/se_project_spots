@@ -19,69 +19,62 @@ class Api {
   }
 
   async getCardList() {
-    const res = await fetch(`${this._baseUrl}/cards`, {
+    return await fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    });
-    return this._handleServerResponse(res);
+    }).then(this._handleServerResponse);
   }
 
   async addCard({ name, link }) {
-    const res = await fetch(`${this._baseUrl}/cards`, {
+    return await fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
         name,
         link,
       }),
-    });
-    return this._handleServerResponse(res);
+    }).then(this._handleServerResponse);
   }
 
   async removeCard(cardID) {
-    const res = await fetch(`${this._baseUrl}/cards/${cardID}`, {
+    return await fetch(`${this._baseUrl}/cards/${cardID}`, {
       method: "DELETE",
       headers: this._headers,
-    });
-    return this._handleServerResponse(res);
+    }).then(this._handleServerResponse);
   }
 
   async getUserInfo() {
-    const res = await fetch(`${this._baseUrl}/users/me`, {
+    return await fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    });
-    return this._handleServerResponse(res);
+    }).then(this._handleServerResponse);
   }
 
   async setUserInfo({ name, about }) {
-    const res = await fetch(`${this._baseUrl}/users/me`, {
+    return await fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name,
         about,
       }),
-    });
-    return this._handleServerResponse(res);
+    }).then(this._handleServerResponse);
   }
 
   async setUserAvatar({ avatar }) {
-    const res = await fetch(`${this._baseUrl}/users/me/avatar`, {
+    return await fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         avatar,
       }),
-    });
-    return this._handleServerResponse(res);
+    }).then(this._handleServerResponse);
   }
 
   async changeLikeCardStatus(cardID, like) {
     // Standard implementation: 2 different methods for liking and disliking
-    const res = await fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+    return await fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
       method: like ? "PUT" : "DELETE",
       headers: this._headers,
-    });
-    return this._handleServerResponse(res);
+    }).then(this._handleServerResponse);
   }
 }
 
