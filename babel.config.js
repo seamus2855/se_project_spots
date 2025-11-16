@@ -5,15 +5,14 @@ const presets = [
       // The browser versions where we want our code to be supported. This could
       // be adjusted to support more or less different browsers. Refer to
       // https://babeljs.io/docs/options#targets for details.
-      targets: "defaults, ie 11, not dead",
+      targets: "defaults, IE 11, not dead",
 
       // Use polyfills for the browsers specified in the above targets option
       // Babel uses polyfills from the core-js library
       useBuiltIns: "entry",
-      corejs: 3,
+      corejs: "^3",
     },
   ],
 ];
 
-export default { presets };
-
+module.exports = { presets };

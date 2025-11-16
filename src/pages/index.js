@@ -1,3 +1,4 @@
+import "./index.css";
 export { enableValidation } from "../scripts/validate.js";
 import Api from "../utils/Api.js";
 
