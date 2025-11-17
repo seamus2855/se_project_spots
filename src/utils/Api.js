@@ -1,80 +1,81 @@
 class Api {
   constructor({ baseUrl, headers }) {
-    // Standard implementation implies an options object
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
 
+  // Private method to handle the server response for all fetch calls
   _handleServerResponse(res) {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    if (res.ok) {
+      return res.json();
+    }
+    // Reject the promise if the server response is not okay
+    return Promise.reject(`Error: ${res.status}`);
   }
 
-  // Could be improved: students can make a special method for fetching and checking responses not to duplicate it in every request:
-  //  _request(url, options) {
-  //     return fetch(url, options).then(this._handleServerResponse)
-  //  }
+  // Private method to encapsulate the fetch logic, reducing repetition
+  async _request(url, options) {
+    try {
+      const res = await fetch(url, options);
+      return this._handleServerResponse(res);
+    } catch (err) {
+      // Handle network errors or other fetch failures
+      return Promise.reject(`Fetch Error: ${err.message}`);
+    }
+  }
 
   getAppInfo() {
     return Promise.all([this.getCardList(), this.getUserInfo()]);
   }
 
   async getCardList() {
-    return await fetch(`${this._baseUrl}/cards`, {
+    return this._request(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    }).then(this._handleServerResponse);
+    });
   }
 
   async addCard({ name, link }) {
-    return await fetch(`${this._baseUrl}/cards`, {
+    return this._request(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify({
-        name,
-        link,
-      }),
-    }).then(this._handleServerResponse);
+      body: JSON.stringify({ name, link }),
+    });
   }
 
   async removeCard(cardID) {
-    return await fetch(`${this._baseUrl}/cards/${cardID}`, {
+    return this._request(`${this._baseUrl}/cards/${cardID}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._handleServerResponse);
+    });
   }
 
   async getUserInfo() {
-    return await fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then(this._handleServerResponse);
+    });
   }
 
   async setUserInfo({ name, about }) {
-    return await fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        name,
-        about,
-      }),
-    }).then(this._handleServerResponse);
+      body: JSON.stringify({ name, about }),
+    });
   }
 
   async setUserAvatar({ avatar }) {
-    return await fetch(`${this._baseUrl}/users/me/avatar`, {
+    return this._request(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        avatar,
-      }),
-    }).then(this._handleServerResponse);
+      body: JSON.stringify({ avatar }),
+    });
   }
 
   async changeLikeCardStatus(cardID, like) {
-    // Standard implementation: 2 different methods for liking and disliking
-    return await fetch(`${this._baseUrl}/cards/${cardID}/likes`, {
+    return this._request(`${this._baseUrl}/cards/${cardID}/likes`, {
       method: like ? "PUT" : "DELETE",
       headers: this._headers,
-    }).then(this._handleServerResponse);
+    });
   }
 }
 

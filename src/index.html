@@ -49,11 +49,14 @@
                 <img class="card__image" src="#" alt="" />
                 <div class="card__footer">
                   <h2 class="card__title"></h2>
-                  <button
-                    aria-label="Like card"
-                    class="card__like-button"
-                    type="button"
-                  ></button>
+                  <div class="card__like-container">
+                    <button
+                      aria-label="Like card"
+                      class="card__like-button"
+                      type="button"
+                    ></button>
+                    <span class="card__like-count">0</span>
+                  </div>
                 </div>
               </li>
             </template>
@@ -106,34 +109,52 @@
           <button type="button" class="modal__close-btn"></button>
           <h2 class="modal__title">New Post</h2>
           <form class="modal__form" id="card-form" novalidate>
-            <label for="post-image-input" class="modal__label">
-              Image link
+            <label for="card-title-input" class="modal__label">
+              Title
               <input
-                id="post-image-input"
-                type="url"
-                class="modal__input"
-                placeholder="Type your name"
-                required
-              />
-              <span id="post-image-input-error" class="modal__error"></span>
-            </label>
-            <label for="post-caption-input" class="modal__label">
-              Caption
-              <input
-                id="post-caption-input"
+                id="card-title-input"
                 type="text"
                 class="modal__input"
-                placeholder="Describe yourself"
+                placeholder="Title"
                 minlength="2"
                 maxlength="30"
                 required
               />
-              <span id="post-caption-input-error" class="modal__error"></span>
+              <span id="card-title-input-error" class="modal__error"></span>
+            </label>
+            <label for="card-link-input" class="modal__label">
+              Image link
+              <input
+                id="card-link-input"
+                type="url"
+                class="modal__input"
+                placeholder="Image link"
+                required
+              />
+              <span id="card-link-input-error" class="modal__error"></span>
+            </label>
+            <button type="submit" class="modal__submit-btn">Create</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal" id="avatar-modal">
+        <div class="modal__container">
+          <button type="button" class="modal__close-btn"></button>
+          <h2 class="modal__title">Update avatar</h2>
+          <form class="modal__form" id="avatar-form" novalidate>
+            <label for="profile-avatar-input" class="modal__label">
+              Image link
+              <input
+                id="profile-avatar-input"
+                type="url"
+                class="modal__input"
+                placeholder="Image link"
+                required
+              />
+              <span id="profile-avatar-input-error" class="modal__error"></span>
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
-        </div>
-        <div class="modal" id="avatar-modal">
         </div>
       </div>
       <div class="modal modal_type_preview" id="preview-modal">
@@ -148,6 +169,5 @@
         </div>
       </div>
     </div>
-  </body>
   </body>
 </html>
