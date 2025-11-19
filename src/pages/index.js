@@ -2,8 +2,7 @@ import "./index.css";
 import Api from "../utils/Api.js";
 // Note: validation helpers may live in ../scripts/validate.js — this file previously re-exported enableValidation.
 // If you have a validate.js with resetValidation/settings, you can import them here.
-// import { enableValidation, resetValidation, settings } from "../scripts/validate.js";
-
+import { resetValidation, settings } from "../scripts/validate.js";
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
@@ -52,7 +51,7 @@ const cardTemplate = document
 const cardsList = document.querySelector(".cards__list");
 
 /**
- * Create a card DOM element, wire up event handlers and return element.
+ Create a card DOM element, wire up event handlers and return element.
  * Uses the currentUserId to show/hide delete button and mark liked state.
  */
 function getCardElement(data) {
@@ -75,10 +74,8 @@ function getCardElement(data) {
   // show delete if current user is the owner
   if (!data.owner || data.owner._id !== currentUserId) {
     deleteButtonEl.style.display = "none";
-  } else {
-    deleteButtonEl.style.display = "";
   }
-
+  
   cardImageEl.addEventListener("click", () => {
     previewImageEl.src = data.link;
     previewImageEl.alt = data.name;
@@ -213,7 +210,7 @@ editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
   // If you have a resetValidation function, call it here (optional)
-  // if (typeof resetValidation === "function") resetValidation(editProfileForm, settings);
+  if (typeof resetValidation === "function") resetValidation(editProfileForm, settings);
   openModal(editProfileModal);
 });
 editProfileCloseBtn.addEventListener("click", () => closeModal(editProfileModal));
@@ -224,7 +221,7 @@ avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 newPostButton.addEventListener("click", function () {
   newPostForm.reset();
-  // if (typeof resetValidation === "function") resetValidation(newPostForm, settings);
+  if (typeof resetValidation === "function") resetValidation(newPostForm, settings);
   openModal(newPostModal);
 });
 newPostCloseButton.addEventListener("click", () => closeModal(newPostModal));
@@ -236,24 +233,20 @@ previewModalCloseButton.addEventListener("click", () => closeModal(previewModal)
 
 api
   .getAppInfo()
-  .then(([cards, user]) => {
-    // getAppInfo in Api.js returns Promise.all([getCardList(), getUserInfo()])
-    // so 'cards' is the array of cards, 'user' is the current user object
-    if (user) {
-      currentUserId = user._id;
-      profileNameEl.textContent = user.name;
-      profileDescriptionEl.textContent = user.about;
-      if (profileAvatarEl && user.avatar) profileAvatarEl.src = user.avatar;
-    }
+  .then(([userData, cardData]) => {
+    // Set current user ID
+    currentUserId = userData._id;
 
-    if (Array.isArray(cards)) {
-      // render cards (reverse or not depending on desired order)
-      cards.forEach((item) => {
-        const cardElement = getCardElement(item);
-        cardsList.append(cardElement);
-      });
-    }
+    // Set profile info
+    profileNameEl.textContent = userData.name;
+    profileDescriptionEl.textContent = userData.about;
+    profileAvatarEl.src = userData.avatar;
+
+    // Render cards
+    cardData.forEach((card) => {
+      cardsList.append(getCardElement(card));
+    });
   })
   .catch((err) => {
-    console.error("Failed to initialize app data:", err);
+    console.error("Failed to load app info:", err);
   });
