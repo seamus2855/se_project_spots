@@ -7,6 +7,7 @@
     <meta name="author" content="Seamus Ryan" />
     <meta name="keywords" content="HTML, CSS" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="./pages/index.css" />
     <title>Spots</title>
   </head>
   <body>
@@ -26,7 +27,8 @@
             </button>
             <img
               src="./images/avatar.jpg"
-              alt="Bessie Coleman"
+              alt="Bessie
+            Coleman"
               class="profile__avatar"
             />
           </div>
@@ -34,7 +36,7 @@
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-button">
-              <img src="./images/pencil.svg" alt="Pencil icon" />Edit Profile
+              <img src="./images/pencil.svg" alt="Pencil icon" />
             </button>
           </div>
           <button type="button" class="profile__add-btn">
@@ -43,10 +45,11 @@
         </section>
         <section class="cards page__section">
           <ul class="cards__list">
+            <!-- FIX: Template should NOT be inside an <li> -->
             <template id="card-template">
               <li class="card">
                 <button class="card__delete-button" type="button"></button>
-                <img class="card__image" src="#" alt="" />
+                <img src="" alt="" class="card__image" />
                 <div class="card__footer">
                   <h2 class="card__title"></h2>
                   <div class="card__like-container">
@@ -55,6 +58,7 @@
                       class="card__like-button"
                       type="button"
                     ></button>
+                    <!-- FIX: Added missing like counter -->
                     <span class="card__like-count">0</span>
                   </div>
                 </div>
@@ -164,10 +168,12 @@
             class="modal__close-btn modal__close-btn_type_preview"
             type="button"
           ></button>
-          <img src="#" alt="" class="modal__image" />
+          <img src="" alt="" class="modal__image" />
           <p class="modal__caption"></p>
         </div>
       </div>
     </div>
+    <!-- FIX: Add script tag at end of body -->
+    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
