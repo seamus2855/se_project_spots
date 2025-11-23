@@ -20,7 +20,7 @@
           <div class="profile__avatar-container">
             <button class="profile__avatar-btn">
               <img
-                src="./images/pencil.svg"
+                src="%=require('./images/pencil.svg')%>"
                 alt="pencil"
                 class="profile__pencil-icon"
               />
@@ -36,11 +36,14 @@
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-button">
-              <img src="./images/pencil.svg" alt="Pencil icon" />
+              <img
+                src="%=require('./images/pencil.svg')%>"
+                alt="Pencil icon"
+              /> Edit Profile
             </button>
           </div>
           <button type="button" class="profile__add-btn">
-            <img src="./images/plus.svg" alt="Plus icon" />New Post
+            <img src="%=require('./images/plus.svg')%>" alt="Plus icon" />New Post
           </button>
         </section>
         <section class="cards page__section">
@@ -59,7 +62,6 @@
                       type="button"
                     ></button>
                     <!-- FIX: Added missing like counter -->
-                    <span class="card__like-count">0</span>
                   </div>
                 </div>
               </li>

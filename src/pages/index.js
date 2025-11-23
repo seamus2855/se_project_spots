@@ -152,7 +152,7 @@ function handleEditProfileSubmit(evt) {
 
   if (!name || !about) return;
 
-  const submitButton = editProfileForm.querySelector(".modal__save-btn");
+  const submitButton = editProfileForm.querySelector(".modal__submit-btn");
   const originalText = submitButton.textContent;
   
   submitButton.textContent = "Saving...";
@@ -181,7 +181,7 @@ function handleNewPostSubmit(evt) {
 
   if (!name || !link) return;
 
-  const submitButton = newPostForm.querySelector(".modal__save-btn");
+  const submitButton = newPostForm.querySelector(".modal__submit-btn");
   const originalText = submitButton.textContent;
   
   submitButton.textContent = "Saving...";
