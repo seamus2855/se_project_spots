@@ -18,6 +18,11 @@
   align-items: flex-end;
   justify-content: center;
   visibility: hidden;
+  color: white;
+  border: none;
+  background-color: #212121;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .profile__avatar-container:hover .profile__avatar-btn {
@@ -111,6 +116,7 @@
 .profile__add-btn:hover {
   opacity: 80%;
 }
+
 @media screen and (max-width: 627px) {
   .profile {
     flex-direction: column;
