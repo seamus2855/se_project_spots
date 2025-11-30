@@ -1,6 +1,6 @@
 .card {
   font-family: "Poppins", Arial, sans-serif;
-  display: flex;
+  display: flexbox;
   flex-direction: column;
   position: relative;
   cursor: pointer;
